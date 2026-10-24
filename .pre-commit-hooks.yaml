@@ -1,0 +1,6 @@
+- id: check-commit-msg
+  name: check commit message format
+  description: Require a `scope: Capitalized summary` first line; reject Co-Authored-By trailers.
+  entry: hooks/check-commit-msg.sh
+  language: script
+  stages: [commit-msg]
