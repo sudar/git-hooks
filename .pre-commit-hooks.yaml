@@ -4,3 +4,11 @@
   entry: hooks/check-commit-msg.sh
   language: script
   stages: [commit-msg]
+
+- id: gitleaks-staged
+  name: gitleaks (detect hardcoded secrets)
+  description: Scan the staged diff for hardcoded secrets. Needs `gitleaks` on PATH (brew install gitleaks).
+  entry: gitleaks git --pre-commit --redact --staged --verbose --no-color
+  language: system
+  pass_filenames: false
+  stages: [pre-commit]
