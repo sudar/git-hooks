@@ -1,13 +1,13 @@
 - id: check-commit-msg
   name: check commit message format
-  description: Require a `scope: Capitalized summary` first line; reject Co-Authored-By trailers.
+  description: "Require a 'scope: Capitalized summary' first line; reject Co-Authored-By trailers."
   entry: hooks/check-commit-msg.sh
   language: script
   stages: [commit-msg]
 
 - id: gitleaks-staged
   name: gitleaks (detect hardcoded secrets)
-  description: Scan the staged diff for hardcoded secrets. Needs `gitleaks` on PATH (brew install gitleaks).
+  description: "Scan the staged diff for hardcoded secrets. Needs gitleaks on PATH (brew install gitleaks)."
   entry: gitleaks git --pre-commit --redact --staged --verbose --no-color
   language: system
   pass_filenames: false

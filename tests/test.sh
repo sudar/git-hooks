@@ -3,6 +3,10 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 HOOK=hooks/check-commit-msg.sh
 fail=0
+
+if command -v pre-commit >/dev/null; then
+  pre-commit validate-manifest .pre-commit-hooks.yaml || { echo "FAIL: invalid .pre-commit-hooks.yaml"; fail=1; }
+fi
 t() { # expected-exit "message" [hook args...]
   local want="$1" msg="$2"; shift 2
   local f; f="$(mktemp)"; printf '%s\n' "$msg" > "$f"
