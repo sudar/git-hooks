@@ -17,7 +17,7 @@ Add this to `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-  - repo: https://github.com/<you>/git-hooks   # or a local path while testing
+  - repo: https://github.com/sudar/git-hooks   # or a local path while testing
     rev: v1.0.0
     hooks:
       - id: check-commit-msg
