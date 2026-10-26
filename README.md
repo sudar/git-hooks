@@ -1,6 +1,20 @@
 # git-hooks
 
-Shared git hooks for [pre-commit](https://pre-commit.com). Because they are git hooks, they work with every tool: Claude Code, Codex, OpenCode, Copilot, Cursor, and a human at the terminal.
+Shared git hooks for [pre-commit](https://pre-commit.com). **You need pre-commit installed to use this repo.** Pre-commit clones this repo at a pinned tag, installs the git hooks, and runs them. Nothing runs without it.
+
+Because they are git hooks, they work with every tool: Claude Code, Codex, OpenCode, Copilot, Cursor, and a human at the terminal.
+
+## Dependencies
+
+| Dependency | Needed for | Install |
+|---|---|---|
+| [pre-commit](https://pre-commit.com) | Everything. It installs and runs the hooks. | `brew install pre-commit` or `pip install pre-commit` |
+| [git](https://git-scm.com) | Everything. | Usually already installed. |
+| [gitleaks](https://github.com/gitleaks/gitleaks) | `gitleaks-staged` only. Pre-commit does not install it. It must be on `PATH`. | `brew install gitleaks` |
+| bash, grep, awk | `check-commit-msg`. | Already present on macOS and Linux. On Windows, use Git Bash or WSL. |
+| [jq](https://jqlang.org) | The optional Claude Code check in `claude/` only. If `jq` is missing, that check skips itself. | `brew install jq` |
+
+A project that uses only `check-commit-msg` does not need gitleaks. Pre-commit needs network access on first run, to clone this repo.
 
 ## Hooks
 
@@ -18,7 +32,7 @@ Add this to `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/sudar/git-hooks   # or a local path while testing
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: check-commit-msg
         # args: [--allow-co-authored-by, --scopes, "fix,feat,docs,refactor,test,chore"]
