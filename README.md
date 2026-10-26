@@ -32,7 +32,7 @@ Add this to `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/sudar/git-hooks   # or a local path while testing
-    rev: v1.0.1
+    rev: v1.0.2
     hooks:
       - id: check-commit-msg
         # args: [--allow-co-authored-by, --scopes, "fix,feat,docs,refactor,test,chore"]
